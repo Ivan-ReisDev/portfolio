@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserCreateRequest } from '../models/user/UserCreateRequest';
 import { environments } from '../../../environments/environments';
@@ -12,10 +12,13 @@ export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
   public signUp(request: UserCreateRequest): Observable<HttpResponse<void>> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
     return this.httpClient.post<void>(
       `${this.API_URL}/users`,
       request,
-      { withCredentials: true, observe: 'response' }
+      { headers, withCredentials: true, observe: 'response' }
     );
   }
 }
