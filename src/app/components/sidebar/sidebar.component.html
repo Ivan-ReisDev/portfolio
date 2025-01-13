@@ -1,0 +1,87 @@
+<div class="card flex justify-center">
+  <p-drawer #drawerRef [(visible)]="visible" [modal]="true" [dismissible]="true" header="Menu">
+    <ng-template #headless>
+      <div class="flex flex-col h-full">
+        <div class="flex items-center justify-between px-6 pt-4 shrink-0">
+          <span class="inline-flex items-center gap-2">
+            <img src="favicon.png" class="w-[40px]" alt="logo">
+            <span class="font-semibold text-2xl text-surface-700">Ivan<span class="text-[#0ca2bd]">.dev</span></span>
+          </span>
+          <span class="text-[#0ca2bd]">
+            <p-button styleClass="custom-close-button h-8 w-8" type="button" (click)="closeCallback($event)" icon="pi pi-times" rounded="true" outlined="true" styleClass="h-8 w-8 text-[#0ca2bd] border-[#0ca2bd]"></p-button>
+          </span>
+        </div>
+        <div class="overflow-y-auto">
+          <ul class="list-none p-4 m-0">
+            <!-- Links de navegação -->
+            <li>
+              <div pRipple pStyleClass="@next" enterFromClass="hidden" enterActiveClass="animate-slidedown" leaveToClass="hidden" leaveActiveClass="animate-slideup" class="p-4 flex items-center justify-between text-surface-600 cursor-pointer p-ripple">
+                <span class="font-medium">Aplicação</span>
+                <i class="pi pi-chevron-down"></i>
+              </div>
+              <ul class="list-none p-0 m-0 overflow-hidden">
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-folder mr-2"></i>
+                    <span class="font-medium">Projetos</span>
+                  </a>
+                </li>
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-send mr-2"></i>
+                    <span class="font-medium">e-mail</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-pencil mr-2"></i>
+                    <span class="font-medium">Blog</span>
+                  </a>
+                </li>
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-info-circle mr-2"></i>
+                    <span class="font-medium">Sobre</span>
+                  </a>
+                </li>
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-globe mr-2"></i>
+                    <span class="font-medium">Tecnologias</span>
+                  </a>
+                </li>
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-phone mr-2"></i>
+                    <span class="font-medium">Contato</span>
+                  </a>
+                </li>
+                <li>
+                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-cog mr-2"></i>
+                    <span class="font-medium">Settings</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-auto">
+          <hr class="mb-4 mx-4 border-t border-0 border-surface" />
+          <a pRipple class="m-4 flex items-center cursor-pointer p-4 gap-2 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+            <span class="font-bold">{{ data.name }}</span>
+          </a>
+          <!-- Botão de Logout -->
+          <a pRipple class="m-4 flex items-center cursor-pointer p-4 gap-2 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple" (click)="logout()">
+            <i class="pi pi-sign-out mr-2"></i>
+            <span class="font-medium">Logout</span>
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </p-drawer>
+  <!-- Butão de fora  -->
+  <p-button  styleClass="bg-transparent text-black border-0 text-black" (click)="visible=true" icon="pi pi-bars"/>
+</div>

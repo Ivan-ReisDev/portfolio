@@ -1,0 +1,55 @@
+<div class="signup text-[#414141]">
+  <div class="w-full h-full flex items-center justify-center">
+    <form class="w-[350px] h-full flex items-center justify-center flex-col" [formGroup]="signUnForm" (ngSubmit)="onSubmit()">
+      <h1 class="w-full text-left text-3xl font-bold">Cadastrar</h1>
+
+      <label for="name" class="flex flex-col w-full text-sm">
+        Nome
+        <input class="border rounded-md py-3 p-1 w-full" type="text" pInputText placeholder="Digite seu nome" formControlName="name" />
+        <small *ngIf="signUnForm.get('name')?.hasError('required') && signUnForm.get('name')?.touched" class="text-red-500">
+          O nome é obrigatório.
+        </small>
+      </label>
+
+      <label for="email" class="flex flex-col w-full text-sm">
+        E-mail
+        <input class="border rounded-md py-3 p-1 w-full" type="text" pInputText placeholder="Digite seu e-mail" formControlName="email" />
+        <small *ngIf="signUnForm.get('email')?.hasError('required') && signUnForm.get('email')?.touched" class="text-red-500">
+          O e-mail é obrigatório.
+        </small>
+        <small *ngIf="signUnForm.get('email')?.hasError('email') && signUnForm.get('email')?.touched" class="text-red-500">
+          Digite um e-mail válido.
+        </small>
+      </label>
+
+      <label for="password" class="flex flex-col mt-4 w-full text-sm">
+        Senha
+        <input class="border rounded-md py-3 p-1" type="password" pInputText placeholder="Digite sua senha" formControlName="password" />
+        <small *ngIf="signUnForm.get('password')?.hasError('required') && signUnForm.get('password')?.touched" class="text-red-500">
+          A senha é obrigatória.
+        </small>
+        <small *ngIf="signUnForm.get('password')?.hasError('minlength') && signUnForm.get('password')?.touched" class="text-red-500">
+          A senha deve ter pelo menos 8 caracteres.
+        </small>
+      </label>
+
+      <label for="confirmPassword" class="flex flex-col mt-4 w-full text-sm">
+        Confirme sua senha
+        <input class="border rounded-md py-3 p-1" type="password" pInputText placeholder="Digite sua senha" formControlName="confirmPassword" />
+        <small *ngIf="signUnForm.get('confirmPassword')?.hasError('required') && signUnForm.get('confirmPassword')?.touched" class="text-red-500">
+          A confirmação de senha é obrigatória.
+        </small>
+        <small *ngIf="signUnForm.get('confirmPassword')?.hasError('minlength') && signUnForm.get('confirmPassword')?.touched" class="text-red-500">
+          A confirmação de senha deve ter pelo menos 8 caracteres.
+        </small>
+
+        <small *ngIf="signUnForm.hasError('passwordMatchValidator') && signUnForm.get('confirmPassword')?.touched" class="text-red-500">
+          As senhas não são iguais.
+        </small>
+      </label>
+
+      <p-button styleClass="mt-2 w-[350px]" label="Entrar" severity="contrast" type="submit" [disabled]="!signUnForm.valid"></p-button>
+      <div class="w-full mt-10 flex justify-center text-xs">Já tem uma conta?<a href="/login" class="ml-1 font-bold">Faça o login</a></div>
+    </form>
+  </div>
+</div>

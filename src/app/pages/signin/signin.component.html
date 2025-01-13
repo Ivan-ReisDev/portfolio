@@ -1,0 +1,40 @@
+<div class="signin text-[#414141]">
+  <div class="w-full h-full flex items-center justify-center">
+    <form class="w-[350px] h-full flex items-center justify-center flex-col" [formGroup]="signinForm"
+      (ngSubmit)="onSubmit()">
+      <h1 class="w-full text-left text-3xl font-bold">Entrar</h1>
+      <label for="email" class="flex flex-col w-full text-sm">
+        e-mail
+        <input class="border rounded-md py-3 p-1 w-full" type="text" pInputText placeholder="Digite seu e-mail"
+          formControlName="email" />
+        <small *ngIf="signinForm.get('email')?.hasError('required') && signinForm.get('email')?.touched"
+          class="text-red-500">
+          O e-mail é obrigatório.
+        </small>
+        <small *ngIf="signinForm.get('email')?.hasError('email') && signinForm.get('email')?.touched"
+          class="text-red-500">
+          Digite um e-mail válido.
+        </small>
+      </label>
+
+      <label for="password" class="flex flex-col mt-4 w-full text-sm">
+        Senha
+        <input class="border rounded-md py-3 p-1" type="password" pInputText placeholder="Digite sua senha"
+          formControlName="password" />
+        <small *ngIf="signinForm.get('password')?.hasError('required') && signinForm.get('password')?.touched"
+          class="text-red-500">
+          A senha é obrigatória.
+        </small>
+        <small *ngIf="signinForm.get('password')?.hasError('minlength') && signinForm.get('password')?.touched"
+          class="text-red-500">
+          A senha deve ter pelo menos 6 caracteres.
+        </small>
+      </label>
+      <div class="w-full flex justify-end"><a href="#" class="text-xs">Esqueci minha senha</a></div>
+
+      <p-button styleClass="mt-2 w-[350px]" label="Entrar" severity="contrast" type="submit"
+        [disabled]="!signinForm.valid"></p-button>
+        <div class="w-full mt-10 flex justify-center text-xs">Ainda não é registrado?<a href="/signup" class="ml-1 font-bold">Crie uma conta</a></div>
+    </form>
+  </div>
+</div>

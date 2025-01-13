@@ -1,0 +1,11 @@
+.signin {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+@media screen and (min-width: 1400px) {
+  .signin {
+    background-position: top;
+  }
+
+}
