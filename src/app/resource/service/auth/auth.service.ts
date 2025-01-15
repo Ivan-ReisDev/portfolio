@@ -29,8 +29,12 @@ export class AuthService {
           if (response) {
             this.cookie.set('portfolio_profile', JSON.stringify(response), { path: '/' });
           }
-          return !!response; 
+          return !!response;
         })
       );
+  }
+
+  public logout(): Observable<void> {
+    return this.httpClient.post<void>(`${this.API_URL}/auth/logout`, {} , { withCredentials: true })
   }
 }

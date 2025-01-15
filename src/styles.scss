@@ -10,3 +10,13 @@
 @tailwind components;
 @tailwind utilities;
 }
+
+
+input:focus {
+  outline: none;
+  border-color: var(--bs-primary); /* Usa a cor primária do Bootstrap */
+  box-shadow: 0 0 2px 0.2rem #0ca1bb88; /* Ajusta a sombra */
+  border: none;
+}
+
+

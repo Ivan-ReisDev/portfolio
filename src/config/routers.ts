@@ -1,6 +1,9 @@
 export const ROUTES_ENDPOINTS = {
   SIGNIN:"login",
-  DASHBOARD:"app/dashboard",
+  APP: "app",
+  DASHBOARD:"dashboard",
+  SETTINGS:"settings",
   PORTFOLIO: "portfolio",
-  SIGNUP: "signup"
+  SIGNUP: "signup",
+  EMAILS: "emails",
 }

@@ -1,0 +1,27 @@
+<p-panel styleClass="w-full" header="Enviar e-mail">
+  <form [formGroup]="sentEmailForm" (ngSubmit)="onSubmit()">
+
+    <div class="flex flex-col gap-2">
+      <label for="email">e-mail *</label>
+      <input type="email" class="border p-2 rounded-md" pInputText id="email" aria-describedby="email"
+        placeholder="Digite o e-mail de destino" formControlName="email" />
+      <small id="email-help"
+        *ngIf="sentEmailForm.get('email')?.hasError('required') && sentEmailForm.get('email')?.touched"
+        class="text-red-500">o e-mail de destino é obrigatório</small>
+      <small *ngIf="sentEmailForm.get('email')?.hasError('email') && sentEmailForm.get('email')?.touched"
+        class="text-red-500">
+        Digite um e-mail válido.
+      </small>
+    </div>
+
+    <div class="flex flex-col gap-2 mt-3">
+      <label for="subject">Assunto</label>
+      <input pInputText id="subject" class="border p-2 rounded-md" aria-describedby="subject"
+        placeholder="Informe o assunto do e-mail"  formControlName="subject" />
+    </div>
+
+    <p-button styleClass="w-full mt-2 bg-[#0CA2BB] border-none hover:bg-[#268596]" type="submit" label="Enviar"
+      icon="pi pi-send" iconPos="right" [disabled]="!sentEmailForm.valid" />
+
+  </form>
+</p-panel>

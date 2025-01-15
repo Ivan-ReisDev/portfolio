@@ -56,7 +56,7 @@ export class SigninComponent implements OnDestroy {
           next: (response: SignInResponse) => {
             if (response) {
               this.signinForm.reset()
-              this.router.navigate([ROUTES_ENDPOINTS.DASHBOARD])
+              this.router.navigate([ROUTES_ENDPOINTS.APP])
               this.messageService.add({
                 severity: 'success',
                 summary: 'Sucesso',

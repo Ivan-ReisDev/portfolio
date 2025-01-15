@@ -1,5 +1,5 @@
 export const environments = {
   production: false,
-  API_URL: 'https://portfolio-api-sigma-three.vercel.app'
+  API_URL: 'http://localhost:3000/api'
 
 }

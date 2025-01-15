@@ -21,13 +21,20 @@
               </div>
               <ul class="list-none p-0 m-0 overflow-hidden">
                 <li>
+                  <a pRipple href="/app/dashboard" class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                    <i class="pi pi-home mr-2"></i>
+                    <span class="font-medium">Dashboard</span>
+                  </a>
+                </li>
+
+                <li>
                   <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
                     <i class="pi pi-folder mr-2"></i>
                     <span class="font-medium">Projetos</span>
                   </a>
                 </li>
                 <li>
-                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                  <a href="app/emails" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
                     <i class="pi pi-send mr-2"></i>
                     <span class="font-medium">e-mail</span>
                   </a>
@@ -58,9 +65,9 @@
                   </a>
                 </li>
                 <li>
-                  <a pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
+                  <a pRipple href="/app/settings" class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
                     <i class="pi pi-cog mr-2"></i>
-                    <span class="font-medium">Settings</span>
+                    <span class="font-medium">Configurações</span>
                   </a>
                 </li>
               </ul>
@@ -70,13 +77,19 @@
         <div class="mt-auto">
           <hr class="mb-4 mx-4 border-t border-0 border-surface" />
           <a pRipple class="m-4 flex items-center cursor-pointer p-4 gap-2 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple">
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+
+            @if(data.url?.includes("http") || data.url?.includes("https")) {
+              <p-avatar image={{data.url}} shape="circle" />
+            } @else {
+              <p-avatar [label]="getInitials(data.name)" shape="circle" class="bg-gray-400 text-lg text-white"></p-avatar>
+            }
+
             <span class="font-bold">{{ data.name }}</span>
           </a>
           <!-- Botão de Logout -->
           <a pRipple class="m-4 flex items-center cursor-pointer p-4 gap-2 rounded-border text-surface-700 hover:bg-surface-100 duration-150 transition-colors p-ripple" (click)="logout()">
             <i class="pi pi-sign-out mr-2"></i>
-            <span class="font-medium">Logout</span>
+            <span class="font-medium">Sair</span>
           </a>
         </div>
       </div>

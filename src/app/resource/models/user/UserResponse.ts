@@ -3,4 +3,5 @@ export interface UserResponse {
   email: string;
   role: string;
   id: number;
+  url?: string;
 }

@@ -9,16 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
   private API_URL = environments.API_URL
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
   constructor(private httpClient: HttpClient) { }
 
   public signUp(request: UserCreateRequest): Observable<HttpResponse<void>> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+
     return this.httpClient.post<void>(
-      `${this.API_URL}/users`,
-      request,
-      { headers, withCredentials: true, observe: 'response' }
+      `${this.API_URL}/users`, request, { headers: this.headers, withCredentials: true, observe: 'response' }
     );
   }
 }
