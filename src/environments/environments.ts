@@ -1,4 +1,5 @@
 export const environments = {
   production: true,
-  API_URL: 'http://18.231.189.14/api'
+  API_URL: 'https://api-portfolio-ivan-reis.shop/api'
 }
+
