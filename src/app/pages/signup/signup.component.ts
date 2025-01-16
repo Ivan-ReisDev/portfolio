@@ -19,6 +19,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class SignupComponent implements OnDestroy {
   private readonly destroy$: Subject<void> = new Subject()
+  public isLoading: boolean = false;
   constructor(
     private usersService: UsersService,
     private router: Router,
@@ -34,6 +35,7 @@ export class SignupComponent implements OnDestroy {
     { validators: passwordMatchValidator() });
 
   onSubmit() {
+    this.isLoading = true;
     if (this.signUnForm.valid) {
       this.usersService.signUp(this.signUnForm.value as UserCreateRequest)
       .pipe(
@@ -51,6 +53,7 @@ export class SignupComponent implements OnDestroy {
                 life: 2000,
               });
             }
+            this.isLoading = false;
           },
           error: (error) => {
             this.messageService.add({
@@ -59,10 +62,12 @@ export class SignupComponent implements OnDestroy {
               detail: error.error.message,
               life: 2000,
             });
+            this.isLoading = false;
           }
         });
     } else {
       console.log('Form inválido');
+      this.isLoading = false;
     }
   }
 

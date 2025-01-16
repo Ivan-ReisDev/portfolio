@@ -1,5 +1,5 @@
 import { CanActivate, Router, UrlTree } from '@angular/router';
-import { AuthService } from './../resource/service/auth/auth.service';
+import { AuthService } from '../resource/service/auth/auth.service';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ROUTES_ENDPOINTS } from '../../config/routers';
@@ -7,7 +7,7 @@ import { ROUTES_ENDPOINTS } from '../../config/routers';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class PublicGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
@@ -17,8 +17,8 @@ export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> {
     return this.authService.isLoggedIn().pipe(
       map(status => {
-        if (!status) {
-          this.router.navigate([ROUTES_ENDPOINTS.SIGNIN]);
+        if (status) {
+          this.router.navigate([`app/${ROUTES_ENDPOINTS.DASHBOARD}`]);
           return false;
         }
         return true;

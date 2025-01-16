@@ -48,7 +48,7 @@
         </small>
       </label>
 
-      <p-button styleClass="mt-2 w-[350px]" label="Entrar" severity="contrast" type="submit" [disabled]="!signUnForm.valid"></p-button>
+      <p-button styleClass="mt-2 w-[350px]" label="Entrar" severity="contrast" type="submit" [disabled]="!signUnForm.valid" [loading]="isLoading"></p-button>
       <div class="w-full mt-10 flex justify-center text-xs">Já tem uma conta?<a href="/login" class="ml-1 font-bold">Faça o login</a></div>
     </form>
   </div>

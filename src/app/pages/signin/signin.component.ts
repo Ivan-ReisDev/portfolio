@@ -33,6 +33,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class SigninComponent implements OnDestroy {
   private readonly destroy$: Subject<void> = new Subject()
+  public isLoading: boolean = false;
  routers = ROUTES_ENDPOINTS;
   constructor(
     private authService: AuthService,
@@ -47,6 +48,7 @@ export class SigninComponent implements OnDestroy {
   });
 
   onSubmit() {
+    this.isLoading = true;
     if (this.signinForm.valid) {
       this.authService.signIn(this.signinForm.value as SignInRequest)
       .pipe(
@@ -64,6 +66,7 @@ export class SigninComponent implements OnDestroy {
                 life: 2000,
               })
             }
+            this.isLoading = false;
           },
           error: (error) => {
             this.messageService.add({
@@ -72,10 +75,12 @@ export class SigninComponent implements OnDestroy {
               detail: error.error.message,
               life: 2000,
             })
+            this.isLoading = false;
           }
         });
     } else {
       console.log('Form inválido');
+      this.isLoading = false;
     }
   }
 

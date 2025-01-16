@@ -33,7 +33,7 @@
       <div class="w-full flex justify-end"><a href="#" class="text-xs">Esqueci minha senha</a></div>
 
       <p-button styleClass="mt-2 w-[350px]" label="Entrar" severity="contrast" type="submit"
-        [disabled]="!signinForm.valid"></p-button>
+        [disabled]="!signinForm.valid" [loading]="isLoading"></p-button>
         <div class="w-full mt-10 flex justify-center text-xs">Ainda não é registrado?<a href="/signup" class="ml-1 font-bold">Crie uma conta</a></div>
     </form>
   </div>

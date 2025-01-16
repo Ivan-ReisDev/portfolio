@@ -1,0 +1,27 @@
+<div class="card border-none shadow-md rounded-md">
+  <p-table
+      [value]="contacts"
+      [rows]="10"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      styleClass="rounded-md"
+      stripedRows
+      (onPage)="onPage($event)">
+      <ng-template class="rounded-md" #header>
+          <tr class="rounded-md">
+              <th style="width:25%">Name</th>
+              <th style="width:25%">e-mail</th>
+              <th style="width:25%">Telefone</th>
+              <th style="width:25%">Último envio</th>
+          </tr>
+      </ng-template>
+      <ng-template #body let-contact>
+          <tr class="text-sm">
+              <td>{{ contact.name ? contact.name : 'Não informado' }}</td>
+              <td>{{ contact.email }}</td>
+              <td>{{ contact.phone ? contact.phone : 'Não informado'}}</td>
+              <td>{{ contact.date ? (contact.date | date: 'dd/MM/yyyy' ): 'Não informado' }}</td>
+          </tr>
+      </ng-template>
+
+  </p-table>
+</div>

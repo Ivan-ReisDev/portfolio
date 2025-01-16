@@ -17,6 +17,7 @@ import { SignInResponse } from '../../resource/models/auth/SignInResponse';
 })
 export class SentEmailsComponent {
 private readonly destroy$: Subject<void> = new Subject()
+public isLoading: boolean = false;
   constructor(
      private messageService: MessageService,
      private emailsService: EmailsService,
@@ -29,6 +30,7 @@ private readonly destroy$: Subject<void> = new Subject()
 
   onSubmit() {
     if (this.sentEmailForm.valid) {
+      this.isLoading = true;
           this.emailsService.sentEmail(this.sentEmailForm.value as SentEmailRequest)
            .pipe(
             takeUntil(this.destroy$)
@@ -44,6 +46,7 @@ private readonly destroy$: Subject<void> = new Subject()
                     life: 2000,
                   })
                 }
+                this.isLoading = false;
               },
               error: (error) => {
                 this.messageService.add({
@@ -52,6 +55,7 @@ private readonly destroy$: Subject<void> = new Subject()
                   detail: error.error.message,
                   life: 2000,
                 })
+                this.isLoading = false;
               }
             });
         } else {
